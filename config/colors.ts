@@ -10,6 +10,7 @@ export const colors = {
   },
   light: {
     DEFAULT: '#FAFAFA',
+    additional: '#CEDDFE'
   },
   dark: {
     DEFAULT: '#353D49',

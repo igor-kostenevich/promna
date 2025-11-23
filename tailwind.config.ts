@@ -7,14 +7,17 @@ export default <Config>{
     extend: {
       colors,
       fontFamily: {
-        arial: ['Arial', 'sans-serif'],
+        inter: ['Inter', 'sans-serif'],
+        instrument: ['Instrument Sans', 'sans-serif'],
       },
       boxShadow: {
+        'button': '0px 13px 17.87px rgba(22, 86, 202, 0.19), 0px 54px 80px rgba(0, 0, 0, 0.11), inset 0px 0px 8px rgba(255, 255, 255, 0.59), inset 0px 0px 8px rgba(255, 255, 255, 0)',
         'primary-sm': '0px 13px 17.87px rgba(22, 86, 202, 0.19)',
         'primary-lg': '0px 54px 80px rgba(0, 0, 0, 0.11)',
         'inner-white': 'inset 0px 0px 8px rgba(255, 255, 255, 1)',
         'inner-white-soft': 'inset 0px 0px 8px rgba(255, 255, 255, 0)',
         'inner-light': 'inset 0px 0px 8px rgba(255, 255, 255, 0.92)',
+        'button-secondary': '0px 13px 17.87px rgba(86, 189, 220, 0.19), inset 0px 0px 8px rgba(255, 255, 255, 0.59), inset 0px 0px 8px rgba(255, 255, 255, 0)',
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(180deg, #0098C5 0%, #0098C5 100%)',

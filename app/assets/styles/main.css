@@ -1,6 +1,6 @@
 html,
 body {
-  @apply m-0 h-full w-full touch-manipulation bg-white font-arial text-base font-normal text-black;
+  @apply m-0 h-full w-full touch-manipulation bg-light font-instrument text-base font-normal text-dark;
 }
 
 * {

@@ -9,12 +9,11 @@ export default defineNuxtConfig({
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       link: [
-        { rel: 'preconnect', href: 'https://fonts.cdnfonts.com' },
-        { rel: 'dns-prefetch', href: 'https://fonts.cdnfonts.com' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
         {
           rel: 'stylesheet',
-          href: 'https://fonts.cdnfonts.com/css/arial-2',
-          crossorigin: 'anonymous',
+          href: 'https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
         },
       ],
 
@@ -68,7 +67,6 @@ export default defineNuxtConfig({
     '@nuxtjs/tailwindcss',
     'nuxt-security',
     '@pinia/nuxt',
-    '@nuxtjs/fontaine',
     ...(IS_DEV_MODE ? ['@nuxt/eslint', '@nuxtjs/stylelint-module'] : []),
   ],
   security: {

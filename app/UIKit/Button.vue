@@ -1,5 +1,73 @@
 <template>
-  <component :is="as" v-bind="buttonAttrs" ref="btn-ref">
+  <div
+    v-if="color === 'primary'"
+    class="p-px rounded-[60px] bg-gradient-to-t from-primary-hover to-primary-hover/0 shadow-button relative"
+  >
+      <component :is="as" v-bind="buttonAttrs" ref="btn-ref">
+        <Icon
+          v-if="loading"
+          class="animate-spin"
+          :size="iconSizeComp"
+          name="loading"
+        />
+        <Icon
+          v-if="iconBefore"
+          :type="iconBefore"
+          :size="iconSizeComp"
+          :color="iconColor"
+        />
+
+        <span v-if="slots.default" class="relative z-20" >
+          <slot />
+        </span>
+
+        <Icon
+          v-if="iconAfter && slots.default"
+          :type="iconAfter"
+          :size="iconSizeComp"
+          :color="iconColor"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-primary to-primary/30 rounded-[60px] pointer-events-none"></div>
+        <div
+          class="absolute inset-0 rounded-[60px] bg-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 group-active:bg-black/20 z-10 pointer-events-none"
+        ></div>
+      </component>
+  </div>
+  <div
+    v-if="color === 'secondary'"
+    class="rounded-full shadow-button-secondary relative"
+  >
+      <component :is="as" v-bind="buttonAttrs" ref="btn-ref">
+        <Icon
+          v-if="loading"
+          class="animate-spin"
+          :size="iconSizeComp"
+          name="loading"
+        />
+        <Icon
+          v-if="iconBefore"
+          :type="iconBefore"
+          :size="iconSizeComp"
+          :color="iconColor"
+        />
+
+        <span v-if="slots.default" class="relative z-20" >
+          <slot />
+        </span>
+
+        <Icon
+          v-if="iconAfter && slots.default"
+          :type="iconAfter"
+          :size="iconSizeComp"
+          :color="iconColor"
+        />
+        <div class="absolute inset-0 bg-gradient-to-t from-primary to-primary/0 rounded-[60px] pointer-events-none z-[-1]"></div>
+        <div
+          class="absolute inset-0 rounded-[60px] bg-white opacity-0 group-hover:opacity-100 transition-all duration-300 group-active:bg-black/5 z-10 pointer-events-none"
+        ></div>
+      </component>
+  </div>
+  <component v-else :is="as" v-bind="buttonAttrs" ref="btn-ref">
     <Icon
       v-if="loading"
       class="animate-spin"
@@ -90,21 +158,14 @@ const buttonAttrs = computed<IButtonAttrs>(() => {
     style: attrs?.style,
     class: [
       attrs.class,
-      'inline-flex items-center justify-center font-bold transition-colors duration-200 disabled:cursor-not-allowed rounded-[45px] gap-2',
+      'inline-flex items-center justify-center font-semibold transition-all duration-200 disabled:cursor-not-allowed gap-2',
 
       // size
-      props.size === 'md' && slots.default && 'text-sm px-4 py-2.5 leading-5',
-      props.size === 'lg' && slots.default && 'text-base px-5 py-3 leading-6',
+      props.size === 'md' && slots.default && 'px-7 py-[14px]',
 
       // color (feel free to adjust to your palette)
-      props.color === 'primary' &&
-        'bg-primary text-green-light hover:bg-primary-hover active:bg-primary-pressed disabled:bg-gray disabled:text-white',
-      props.color === 'secondary' &&
-        'bg-green text-primary hover:text-primary-text active:text-primary hover:bg-green-hover active:bg-green-pressed disabled:bg-gray disabled:text-white',
-      props.color === 'neutral' &&
-        'bg-white text-dark outline outline-gray-dark text-black hover:bg-gray-hover active:bg-white active:outline-gray-pressed disabled:bg-gray-light disabled:outline-none disabled:text-gray-opacity',
-      props.color === 'accent' &&
-        'bg-light hover:bg-light-hover active:bg-light-pressed disabled:bg-gray-light text-secondary hover:text-secondary-hover active:text-secondary-pressed disabled:text-gray-opacity',
+      props.color === 'primary' && 'group text-white inline-flex items-center bg-primary py-[14px] px-7 rounded-[60px]',
+      props.color === 'secondary' && 'group text-primary py-4 px-[55px] bg-white/80 rounded-[60px] text-lg',
       // loading state
       props.loading && 'opacity-50 pointer-events-none',
       !slots.default && props.size === 'lg' && 'p-3.5',
