@@ -34,7 +34,7 @@
       </component>
   </div>
   <div
-    v-if="color === 'secondary'"
+    v-else-if="color === 'secondary'"
     class="rounded-full shadow-button-secondary relative"
   >
       <component :is="as" v-bind="buttonAttrs" ref="btn-ref">

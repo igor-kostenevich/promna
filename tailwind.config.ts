@@ -18,6 +18,7 @@ export default <Config>{
         'inner-white-soft': 'inset 0px 0px 8px rgba(255, 255, 255, 0)',
         'inner-light': 'inset 0px 0px 8px rgba(255, 255, 255, 0.92)',
         'button-secondary': '0px 13px 17.87px rgba(86, 189, 220, 0.19), inset 0px 0px 8px rgba(255, 255, 255, 0.59), inset 0px 0px 8px rgba(255, 255, 255, 0)',
+        'inner-white-strong': 'inset 0 0 8px rgba(255, 255, 255, 1), inset 0 0 8px rgba(255, 255, 255, 0)',
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(180deg, #0098C5 0%, #0098C5 100%)',

@@ -3,7 +3,9 @@ export const colors = {
   black: '#000000',
   primary: {
     DEFAULT: '#0098C5',
-    hover: '#CEF3FE'
+    hover: '#CEF3FE',
+    additional: '#1B9DC4',
+    accent: '#8FD6EB'
   },
   secondary: {
     DEFAULT: '#F5F5F5',
@@ -14,6 +16,7 @@ export const colors = {
   },
   dark: {
     DEFAULT: '#353D49',
-    additional: '#101828'
+    additional: '#101828',
+    text: '#252C3A'
   },
 };
