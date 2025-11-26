@@ -1,17 +1,17 @@
 <template>
-  <div
-    class="relative w-full"
+  <label
+    class="relative flex w-full flex-col rounded-2xl bg-white px-5 py-3 pb-[15px] shadow-white-spread"
     :class="{
       'pointer-events-none': disabled,
     }"
   >
     <div
       v-if="$slots.topTextLeft || $slots.topTextRight"
-      class="mb-0.5 flex items-center justify-between gap-2"
+      class="flex items-center justify-between gap-2"
     >
       <span
-        v-if="$slots.topTextLeft"
-        class="leading-6 text-black/70"
+        v-if="!$slots.errorMessage && $slots.topTextLeft"
+        class="text-xs font-semibold leading-5 text-gray-dark"
         :class="{
           'text-gray-disabled': disabled,
         }"
@@ -19,8 +19,14 @@
         <slot name="topTextLeft" />
       </span>
       <span
+        v-if="$slots.errorMessage"
+        class="text-xs font-semibold leading-5 text-red"
+      >
+        <slot name="errorMessage" />
+      </span>
+      <span
         v-if="$slots.topTextRight"
-        class="leading-6 text-black/70"
+        class="text-xs font-semibold leading-5 text-gray-dark"
         :class="{
           'text-gray-disabled': disabled,
         }"
@@ -30,21 +36,18 @@
     </div>
 
     <div
-      class="relative flex h-[30px] w-full items-center border-b border-gray-secondary transition-colors hover:border-gray-additional active:border-gray-pressed"
+      class="relative flex h-6 w-full items-center transition-colors"
       :class="{
-        'border-red': $slots.errorMessage,
         'border-gray-disabled': disabled,
-        '!border-gray-pressed': isFocused && !$slots.errorMessage && !disabled,
       }"
     >
       <input
         ref="input"
         v-model="value"
         v-bind="$attrs"
-        class="h-full w-full border-none bg-transparent text-sm leading-6 placeholder-gray-opacity outline-none hover:placeholder-gray-text focus:placeholder-gray-opacity"
+        class="h-full w-full border-none bg-transparent font-semibold leading-6 placeholder-dark/60 outline-none"
         :class="[
           {
-            'text-black': !isFocused && !$slots.errorMessage,
             'text-gray-disabled placeholder:text-gray-disabled': disabled,
             'pr-6': !icon && !hideClearBtn,
             'pr-12': icon && !hideClearBtn,
@@ -80,7 +83,7 @@
 
         <Icon
           v-if="icon"
-          class="pointer-events-none text-gray-opacity"
+          class="text-gray-opacity pointer-events-none"
           :type="icon"
           :size="20"
         />
@@ -104,20 +107,14 @@
 
     <span
       v-if="$slots.additionalMessage && !$slots.errorMessage"
-      class="mt-1 block text-sm leading-5 text-gray-text"
+      class="text-gray-text mt-1 block text-sm leading-5"
     >
       <slot name="additionalMessage" />
-    </span>
-    <span
-      v-if="$slots.errorMessage"
-      class="mt-1 block text-sm leading-5 text-red"
-    >
-      <slot name="errorMessage" />
     </span>
     <span v-if="$slots.infoText" class="mt-3 block text-sm leading-5">
       <slot name="infoText" />
     </span>
-  </div>
+  </label>
 </template>
 
 <script setup lang="ts">
@@ -264,7 +261,7 @@ onMounted(async () => {
     observer.value.observe(input.value);
   }
 
-  if(props.modelValue) {
+  if (props.modelValue) {
     input.value?.focus();
     input.value?.blur();
   }

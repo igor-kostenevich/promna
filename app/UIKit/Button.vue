@@ -1,73 +1,77 @@
 <template>
   <div
     v-if="color === 'primary'"
-    class="p-px rounded-[60px] bg-gradient-to-t from-primary-hover to-primary-hover/0 shadow-button relative"
+    class="relative rounded-[60px] bg-gradient-to-t from-primary-hover to-primary-hover/0 p-px shadow-button"
   >
-      <component :is="as" v-bind="buttonAttrs" ref="btn-ref">
-        <Icon
-          v-if="loading"
-          class="animate-spin"
-          :size="iconSizeComp"
-          name="loading"
-        />
-        <Icon
-          v-if="iconBefore"
-          :type="iconBefore"
-          :size="iconSizeComp"
-          :color="iconColor"
-        />
+    <component :is="as" v-bind="buttonAttrs" ref="btn-ref">
+      <Icon
+        v-if="loading"
+        class="animate-spin"
+        :size="iconSizeComp"
+        name="loading"
+      />
+      <Icon
+        v-if="iconBefore"
+        :type="iconBefore"
+        :size="iconSizeComp"
+        :color="iconColor"
+      />
 
-        <span v-if="slots.default" class="relative z-20" >
-          <slot />
-        </span>
+      <span v-if="slots.default" class="relative z-20">
+        <slot />
+      </span>
 
-        <Icon
-          v-if="iconAfter && slots.default"
-          :type="iconAfter"
-          :size="iconSizeComp"
-          :color="iconColor"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-primary to-primary/30 rounded-[60px] pointer-events-none"></div>
-        <div
-          class="absolute inset-0 rounded-[60px] bg-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300 group-active:bg-black/20 z-10 pointer-events-none"
-        ></div>
-      </component>
+      <Icon
+        v-if="iconAfter && slots.default"
+        :type="iconAfter"
+        :size="iconSizeComp"
+        :color="iconColor"
+      />
+      <div
+        class="pointer-events-none absolute inset-0 rounded-[60px] bg-gradient-to-t from-primary to-primary/30"
+      />
+      <div
+        class="pointer-events-none absolute inset-0 z-10 rounded-[60px] bg-white/10 opacity-0 transition-all duration-300 group-hover:opacity-100 group-active:bg-black/20"
+      />
+    </component>
   </div>
   <div
     v-else-if="color === 'secondary'"
-    class="rounded-full shadow-button-secondary relative"
+    class="relative rounded-full shadow-button-secondary"
   >
-      <component :is="as" v-bind="buttonAttrs" ref="btn-ref">
-        <Icon
-          v-if="loading"
-          class="animate-spin"
-          :size="iconSizeComp"
-          name="loading"
-        />
-        <Icon
-          v-if="iconBefore"
-          :type="iconBefore"
-          :size="iconSizeComp"
-          :color="iconColor"
-        />
+    <component :is="as" v-bind="buttonAttrs" ref="btn-ref">
+      <Icon
+        v-if="loading"
+        class="animate-spin"
+        :size="iconSizeComp"
+        name="loading"
+      />
+      <Icon
+        v-if="iconBefore"
+        :type="iconBefore"
+        :size="iconSizeComp"
+        :color="iconColor"
+      />
 
-        <span v-if="slots.default" class="relative z-20" >
-          <slot />
-        </span>
+      <span v-if="slots.default" class="relative z-20">
+        <slot />
+      </span>
 
-        <Icon
-          v-if="iconAfter && slots.default"
-          :type="iconAfter"
-          :size="iconSizeComp"
-          :color="iconColor"
-        />
-        <div class="absolute inset-0 bg-gradient-to-t from-primary to-primary/0 rounded-[60px] pointer-events-none z-[-1]"></div>
-        <div
-          class="absolute inset-0 rounded-[60px] bg-white opacity-0 group-hover:opacity-100 transition-all duration-300 group-active:bg-black/5 z-10 pointer-events-none"
-        ></div>
-      </component>
+      <Icon
+        v-if="iconAfter && slots.default"
+        :type="iconAfter"
+        :size="iconSizeComp"
+        :color="iconColor"
+      />
+      <div
+        class="pointer-events-none absolute inset-0 z-[-1] rounded-[60px] bg-gradient-to-t from-primary to-primary/0"
+      />
+      <div
+        class="pointer-events-none absolute inset-0 z-10 rounded-[60px] bg-white opacity-0 transition-all duration-300 group-hover:opacity-100 group-active:bg-black/5"
+      />
+    </component>
   </div>
-  <component v-else :is="as" v-bind="buttonAttrs" ref="btn-ref">
+  <component :is="as" v-else v-bind="buttonAttrs" ref="btn-ref">
     <Icon
       v-if="loading"
       class="animate-spin"
@@ -164,12 +168,16 @@ const buttonAttrs = computed<IButtonAttrs>(() => {
       props.size === 'md' && slots.default && 'px-7 py-[14px]',
 
       // color (feel free to adjust to your palette)
-      props.color === 'primary' && 'group text-white inline-flex items-center bg-primary py-[14px] px-7 rounded-[60px]',
-      props.color === 'secondary' && 'group text-primary py-4 px-[55px] bg-white/80 rounded-[60px] text-lg',
+      props.color === 'primary' &&
+        'group text-white inline-flex items-center bg-primary py-[14px] px-7 rounded-[60px]',
+      props.color === 'secondary' &&
+        'group text-primary py-4 px-[55px] bg-white/80 rounded-[60px] text-lg',
+      props.color === 'neutral' &&
+        'border border-gray text-dark bg-transparent px-7 py-[14px] rounded-full hover:bg-white hover:text-black active:bg-black/5 active:text-dark',
       // loading state
       props.loading && 'opacity-50 pointer-events-none',
       !slots.default && props.size === 'lg' && 'p-3.5',
-      !slots.default && props.size === 'md' && 'p-3',
+      !slots.default && props.size === 'md' && 'h-9 w-9 !p-0',
 
       // fullwidth
       props.fullwidth && 'w-full',

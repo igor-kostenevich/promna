@@ -1,18 +1,21 @@
 <template>
-  <div
-    class="relative w-full"
-    :class="{
-      'pointer-events-none opacity-40': disabled,
-      'text-red': $slots.errorMessage,
-    }"
+  <label
+    class="relative min-h-[144px] w-full rounded-2xl bg-white px-5 py-3 pb-[15px] shadow-white-spread"
   >
     <div
       v-if="$slots.topTextLeft || $slots.topTextRight"
-      class="mb-0.5 flex items-center justify-between gap-2"
+      class="flex items-center justify-between gap-2"
     >
       <span
-        v-if="$slots.topTextLeft"
-        class="leading-6 text-black/70"
+        v-if="$slots.errorMessage"
+        :id="errorId"
+        class="text-xs font-semibold leading-5 text-red"
+      >
+        <slot name="errorMessage" />
+      </span>
+      <span
+        v-if="!$slots.errorMessage && $slots.topTextLeft"
+        class="text-xs font-semibold leading-5 text-gray-dark"
         :class="{
           'text-gray-disabled': disabled,
         }"
@@ -21,7 +24,7 @@
       </span>
       <span
         v-if="$slots.topTextRight"
-        class="leading-6 text-black/70"
+        class="text-xs font-semibold leading-5 text-gray-dark"
         :class="{
           'text-gray-disabled': disabled,
         }"
@@ -30,25 +33,13 @@
       </span>
     </div>
 
-    <div
-      class="relative flex w-full border border-gray-secondary transition-colors hover:border-gray-additional active:border-gray-pressed"
-      :class="{
-        'border-red': $slots.errorMessage,
-        'border-gray-light': disabled,
-        '!border-gray-pressed': isFocused && !$slots.errorMessage && !disabled,
-      }"
-    >
+    <div class="relative flex w-full transition-colors">
       <textarea
         v-bind="$attrs"
         :id="textareaId"
         ref="textarea"
         v-model="value"
-        class="min-h-[156px] w-full resize-none bg-transparent px-3 py-1.5 leading-6 placeholder-gray-opacity outline-none hover:placeholder-gray-text focus:placeholder-gray-opacity"
-        :class="[
-          {
-            'text-black': !isFocused && !$slots.errorMessage,
-          },
-        ]"
+        class="w-full resize-none bg-transparent font-semibold leading-6 placeholder-dark/60 outline-none"
         :required="required"
         :placeholder="placeholder"
         :disabled="disabled"
@@ -77,21 +68,13 @@
 
     <div class="mt-1 flex items-center justify-between">
       <span
-        v-if="$slots.errorMessage"
-        :id="errorId"
-        class="block text-sm leading-5 text-red"
-      >
-        <slot name="errorMessage" />
-      </span>
-
-      <span
         v-if="showCounter && typeof maxlength === 'number'"
-        class="ml-auto block text-sm leading-5 text-gray-text"
+        class="text-gray-text ml-auto block text-sm leading-5"
       >
         {{ (value || '').length }} / {{ maxlength }}
       </span>
     </div>
-  </div>
+  </label>
 </template>
 
 <script setup lang="ts">

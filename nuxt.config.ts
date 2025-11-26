@@ -2,7 +2,6 @@ import { resolve } from 'path';
 const IS_DEV_MODE = process.env.NODE_ENV === 'development';
 
 export default defineNuxtConfig({
-  ssr: false,
   app: {
     head: {
       title: 'promna',
@@ -10,7 +9,11 @@ export default defineNuxtConfig({
       viewport: 'width=device-width, initial-scale=1',
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: 'anonymous' },
+        {
+          rel: 'preconnect',
+          href: 'https://fonts.gstatic.com',
+          crossorigin: 'anonymous',
+        },
         {
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
@@ -65,21 +68,23 @@ export default defineNuxtConfig({
   },
   modules: [
     '@nuxtjs/tailwindcss',
-    'nuxt-security',
+    // 'nuxt-security',
     '@pinia/nuxt',
     ...(IS_DEV_MODE ? ['@nuxt/eslint', '@nuxtjs/stylelint-module'] : []),
   ],
-  security: {
-    headers: {
-      contentSecurityPolicy: {
-        'img-src': ["'self'", 'blob:', "'self'", 'data:'],
-      },
-      crossOriginEmbedderPolicy: 'unsafe-none',
+  // security: {
+  //   headers: {
+  //     contentSecurityPolicy: false
+  //     // contentSecurityPolicy: {
+  //     //   'img-src': ["'self'", 'blob:', "'self'", 'data:'],
+  //     // },
+  //     // crossOriginEmbedderPolicy: 'unsafe-none',
 
-      crossOriginOpenerPolicy: 'same-origin-allow-popups',
-    },
-  },
-  components: false,
+  //     // crossOriginOpenerPolicy: 'same-origin-allow-popups',
+  //   },
+  // },
+  ssr: true,
+  components: true,
 
   features: {
     inlineStyles: false,
