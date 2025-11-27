@@ -5,7 +5,7 @@
     >
       <div class="flex flex-col items-center px-4">
         <div
-          class="mb-2.5 rounded-full border border-primary-hover px-4 py-1 text-lg font-medium text-white shadow-inner-white-strong sm:mb-5"
+          class="mb-2.5 rounded-full border border-primary-hover px-4 py-1 text-xs font-medium leading-5 text-white shadow-inner-white-strong sm:mb-5 sm:text-lg"
         >
           Book a Call
         </div>

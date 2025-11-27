@@ -8,7 +8,9 @@
           <div class="mb-6 md:mb-3">
             <img src="/images/logo.png" alt="logo" />
           </div>
-          <p class="max-w-[405px] text-xl font-bold text-dark-additional">
+          <p
+            class="max-w-[405px] text-base font-bold leading-6 text-dark-additional sm:text-xl sm:leading-7"
+          >
             © 2025 Processive — Ongoing review management for B2B companies
           </p>
         </div>
