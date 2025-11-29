@@ -94,7 +94,7 @@
           class="flex flex-col gap-4 rounded-2xl bg-secondary p-6 shadow-subtle sm:flex-row sm:items-center sm:gap-0 sm:py-8"
         >
           <span
-            class="mr-5 text-5xl font-semibold leading-[48px] text-primary sm:text-[66px] sm:leading-[121px]"
+            class="mr-5 text-5xl font-semibold leading-[48px] text-primary sm:text-[66px] sm:leading-[60px]"
             >0{{ idx + 1 }}</span
           >
           <p class="text-lg font-bold text-dark-additional">{{ item.title }}</p>
@@ -118,9 +118,9 @@
   <section class="mb-12 sm:mb-[100px]">
     <div class="container-wrapp">
       <div class="grid gap-4 md:grid-cols-2 md:gap-16 xl:gap-40">
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center sm:items-start">
           <div
-            class="mb-3 inline-flex justify-center rounded-full bg-white px-4 py-1 text-xs font-medium text-dark-text shadow-subtle sm:text-base"
+            class="mb-3 inline-flex justify-center rounded-full bg-white px-4 py-1 text-xs font-medium text-dark-text shadow-subtle sm:w-max sm:justify-start sm:text-base"
           >
             The Bottlenecks
           </div>
