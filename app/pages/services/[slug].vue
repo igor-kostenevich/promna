@@ -93,7 +93,8 @@
           :key="idx"
           class="flex flex-col gap-4 rounded-2xl bg-secondary p-6 shadow-subtle sm:flex-row sm:items-center sm:gap-0 sm:py-8"
         >
-          <span class="mr-5 text-5xl font-semibold leading-[48px] text-primary"
+          <span
+            class="mr-5 text-5xl font-semibold leading-[48px] text-primary sm:text-[66px] sm:leading-[121px]"
             >0{{ idx + 1 }}</span
           >
           <p class="text-lg font-bold text-dark-additional">{{ item.title }}</p>
