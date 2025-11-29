@@ -1,5 +1,5 @@
 <template>
-  <div class="mb-16 px-2 sm:mb-[100px]">
+  <div id="form" class="mb-16 px-2 sm:mb-[100px]">
     <div
       class="relative mx-auto w-full max-w-[1248px] rounded-2xl bg-gradient-to-b from-primary-additional via-primary-accent to-secondary pb-6 pt-6 sm:min-h-[976px] sm:pb-[104px] sm:pt-16"
     >
@@ -87,7 +87,7 @@
             <Icon name="finish" class="stroke-white text-white" :size="32" />
           </div>
           <div
-            class="mb-4 text-4xl font-semibold tracking-tight text-dark-additional"
+            class="mb-4 text-2xl font-semibold tracking-tight text-dark-additional sm:text-4xl"
           >
             Form sent successfully
           </div>

@@ -37,8 +37,8 @@
     </div>
     <Companies />
   </div>
-  <div class="bg-gradient-to-b from-primary-accent to-light">
-    <div class="container mb-5 flex flex-col items-center sm:mb-8">
+  <section id="proof" class="bg-gradient-to-b from-primary-accent to-light">
+    <div class="container-wrapp mb-5 flex flex-col items-center sm:mb-8">
       <img
         src="/images/business.png"
         alt="decor image"
@@ -57,7 +57,7 @@
         functions helps solve common operational challenges, such as:
       </p>
     </div>
-  </div>
+  </section>
   <div class="mx-auto mb-12 w-full max-w-[1248px] px-4 sm:mb-24">
     <div class="flex flex-wrap justify-center gap-4">
       <Card
@@ -69,7 +69,7 @@
       />
     </div>
   </div>
-  <div class="container mb-12 sm:mb-[103px]">
+  <div class="container-wrapp mb-12 sm:mb-[103px]">
     <h3
       class="mb-5 text-center text-[32px] font-semibold leading-10 tracking-tight text-dark-additional sm:mb-12 sm:text-4xl sm:leading-[44px]"
     >
@@ -97,8 +97,8 @@
       </li>
     </ul>
   </div>
-  <section class="decor mb-12 sm:pt-9">
-    <div class="container grid">
+  <section id="how-work" class="decor mb-12 sm:pt-9">
+    <div class="container-wrapp grid">
       <img
         src="/images/success.png"
         class="order-3 mx-auto h-[228px] w-[228px] sm:order-1 sm:h-[342px] sm:w-[342px]"
@@ -147,7 +147,7 @@
     </div>
   </section>
   <section class="mb-12 sm:mb-[120px]">
-    <div class="container sm:px-8">
+    <div class="container-wrapp sm:px-8">
       <div
         class="relative rounded-2xl bg-gradient-to-b from-primary-accent/80 to-primary-accent/40 p-4 pb-6 text-center text-xl font-bold leading-6 tracking-tight text-dark-additional sm:px-[45px] sm:py-[30px] sm:text-[28px] sm:leading-9"
       >
@@ -164,11 +164,12 @@
   </section>
   <Form
     :title="'Book a 20-min call to discuss which processes could be delegated for higher efficiency.'"
-    description="We’ll review your current setup, identify weak points, and show how better structure can unlock more revenue."
   />
 </template>
 
 <script setup lang="ts">
+import servicesData from '../../public/data/services.json';
+
 const Form = defineAsyncComponent(() => import('~/components/layout/Form.vue'));
 const Companies = defineAsyncComponent(
   () => import('~/components/pages/Companies.vue')
@@ -196,22 +197,7 @@ const cards = [
   },
 ];
 
-const services = [
-  {
-    slug: 'crm-hygiene',
-    icon: 'featured-icon',
-    title: 'ReviewOps / Customer Advocacy',
-    description:
-      'Get fresh G2, Clutch, and Capterra reviews and proof materials consistently.',
-  },
-  {
-    slug: 'pipeline-setup',
-    icon: 'hugeicons-clean',
-    title: 'CRM Hygiene & Pipeline Setup',
-    description:
-      'Clean data, align stages, and create reliable reporting foundations.',
-  },
-];
+const services = ref(servicesData);
 </script>
 
 <style scoped>

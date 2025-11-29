@@ -1,12 +1,12 @@
 <template>
   <footer class="border-t border-gray-border pt-6 sm:pt-8">
-    <div class="container">
+    <div class="container-wrapp">
       <div
         class="flex flex-wrap justify-between gap-5 pb-6 sm:pb-[72px] md:flex-nowrap"
       >
         <div>
           <div class="mb-6 md:mb-3">
-            <img src="/images/logo.png" alt="logo" />
+            <img class="max-w-[145px]" src="/images/logo.png" alt="logo" />
           </div>
           <p
             class="max-w-[405px] text-base font-bold leading-6 text-dark-additional sm:text-xl sm:leading-7"
@@ -22,14 +22,11 @@
               SERVICES
             </p>
             <ul class="grid gap-2">
-              <li>
-                <nuxt-link class="font-bold text-dark-additional" to="/"
-                  >RevOps</nuxt-link
-                >
-              </li>
-              <li>
-                <nuxt-link class="font-bold text-dark-additional" to="/"
-                  >CRM Hygiene</nuxt-link
+              <li v-for="link in links" :key="link.name">
+                <nuxt-link
+                  class="font-bold text-dark-additional"
+                  :to="link.to"
+                  >{{ link.name }}</nuxt-link
                 >
               </li>
             </ul>
@@ -95,10 +92,17 @@
 </template>
 
 <script lang="ts" setup>
+import servicesData from '../../../public/data/services.json';
+
 const Icon = defineAsyncComponent(() => import('@/UIKit/Icon.vue'));
 const Button = defineAsyncComponent(() => import('@/UIKit/Button.vue'));
 
 function upToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
+
+const links = servicesData.map((service: any) => ({
+  name: service.footerName,
+  to: `/services/${service.slug}`,
+}));
 </script>
