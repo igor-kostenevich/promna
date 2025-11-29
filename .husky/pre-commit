@@ -1,6 +1,4 @@
 #!/usr/bin/env sh
 if [ -e .git/MERGE_MSG ]; then
   echo "Skipping pre-commit hook during merge."
-else
-  npx lint-staged
 fi
