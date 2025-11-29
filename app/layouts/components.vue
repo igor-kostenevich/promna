@@ -1,5 +1,5 @@
 <template>
-  <div class="p-10">
+  <div class="bg-dark/40 p-10">
     <slot />
   </div>
 </template>
