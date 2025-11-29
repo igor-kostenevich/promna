@@ -27,7 +27,9 @@
           {{ service.description }}
         </h2>
         <client-only
-          ><Button color="secondary">Book a 20-min Call</Button></client-only
+          ><Button color="secondary" @click="scrollToElement('form')"
+            >Book a 20-min Call</Button
+          ></client-only
         >
       </div>
       <div>
