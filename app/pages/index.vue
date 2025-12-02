@@ -1,5 +1,6 @@
 <template>
   <div
+    id="hero"
     class="entry relative flex min-h-[750px] flex-col items-center bg-gradient-to-b from-primary to-primary-accent pt-[84px] md:pt-[180px]"
   >
     <div class="entry-bg hidden lg:block" />
@@ -23,7 +24,9 @@
         We handle the operational side of your marketing and sales — so your
         team can focus on growth
       </h2>
-      <Button color="secondary">Book a 20-min Call</Button>
+      <Button color="secondary" @click="scrollToElement('form')"
+        >Book a 20-min Call</Button
+      >
     </div>
     <div class="mb-6 lg:hidden">
       <img src="/images/entry-arrows.png" alt="" />
@@ -177,6 +180,8 @@ const Companies = defineAsyncComponent(
 const Card = defineAsyncComponent(() => import('~/components/pages/Card.vue'));
 const Icon = defineAsyncComponent(() => import('@/UIKit/Icon.vue'));
 const Button = defineAsyncComponent(() => import('@/UIKit/Button.vue'));
+
+const { scrollToElement } = useScrollTo();
 
 const cards = [
   {

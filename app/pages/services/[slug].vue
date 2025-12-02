@@ -1,5 +1,6 @@
 <template>
   <div
+    id="hero"
     class="entry relative flex min-h-[750px] flex-col items-center bg-gradient-to-b from-primary to-primary-accent pt-[84px] md:pt-[180px]"
   >
     <div

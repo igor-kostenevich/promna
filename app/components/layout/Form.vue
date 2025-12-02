@@ -107,7 +107,7 @@
           By submitting, you agree to our
           <nuxt-link
             class="text-primary-additional underline transition hover:text-primary hover:no-underline"
-            to="/"
+            to="/privacy-policy"
             >Privacy Policy.</nuxt-link
           >
         </div>

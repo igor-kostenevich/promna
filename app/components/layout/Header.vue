@@ -3,16 +3,16 @@
     <div
       class="mx-auto flex w-full max-w-[1232px] items-center justify-between gap-4 rounded-full bg-white p-2 pl-4 lg:p-2.5 lg:pl-8"
     >
-      <nuxt-link to="/">
+      <button @click="scrollToElement('hero')">
         <img
           class="max-w-[108px] lg:max-w-[145px]"
           src="/images/logo.png"
           alt="logo"
         />
-      </nuxt-link>
+      </button>
       <nav class="hidden lg:block">
         <ul class="flex items-center gap-[26px]">
-          <li class="border-r border-[#EFEFEF] pr-[26px]">
+          <li class="border-r border-gray pr-[26px]">
             <div
               to="/about"
               class="group relative inline-flex cursor-pointer items-center text-sm font-semibold text-dark-additional"
@@ -68,7 +68,7 @@
         </ul>
       </nav>
       <div class="hidden lg:block">
-        <Button @click="scrollToElement('form')">Book a 20-min Call</Button>
+        <Button @click="scrollToElement('form')">Book a Call</Button>
       </div>
       <div class="flex items-center gap-2 lg:!hidden">
         <Button class="h-[36px] text-sm" @click="scrollToElement('form')"
@@ -161,8 +161,8 @@ function toggleMobileMenu() {
 const services = ref(servicesData);
 
 const mainPageList = [
-  { name: 'Proof', link: 'proof' },
-  { name: 'How We Work', link: 'how-work' },
+  { name: 'Why It Works', link: 'proof' },
+  { name: 'Our Approach', link: 'how-work' },
 ];
 
 const templatePageList = [

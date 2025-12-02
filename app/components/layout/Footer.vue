@@ -39,12 +39,16 @@
             </p>
             <ul class="grid gap-2">
               <li>
-                <nuxt-link class="font-bold text-dark-additional" to="/"
+                <nuxt-link
+                  class="font-bold text-dark-additional"
+                  to="/privacy-policy"
                   >Privacy Policy</nuxt-link
                 >
               </li>
               <li>
-                <nuxt-link class="font-bold text-dark-additional" to="/"
+                <nuxt-link
+                  class="font-bold text-dark-additional"
+                  to="/terms-and-conditions"
                   >Terms & Conditions</nuxt-link
                 >
               </li>
@@ -58,13 +62,14 @@
             </p>
             <ul class="grid gap-2">
               <li class="flex items-center">
-                <a
-                  class="font-bold text-dark"
-                  href="mailto:hello@processive.com"
-                  >hello@processive.com</a
+                <a class="font-bold text-dark" href="mailto:info@processive.com"
+                  >info@processive.com</a
                 >
-                <span class="mx-4 inline-flex h-1 w-1 bg-dark" />
-                <Icon name="linkedin" />
+              </li>
+              <li>
+                <a target="_blank" href="https://linkedin.com">
+                  <Icon name="linkedin" />
+                </a>
               </li>
             </ul>
           </nav>
