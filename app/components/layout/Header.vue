@@ -12,6 +12,11 @@
       </button>
       <nav class="hidden lg:block">
         <ul class="flex items-center gap-[26px]">
+          <li v-if="route.path !== '/'">
+            <nuxt-link class="text-sm font-semibold text-dark-additional" to="/"
+              >Home</nuxt-link
+            >
+          </li>
           <li class="border-r border-gray pr-[26px]">
             <div
               to="/about"
